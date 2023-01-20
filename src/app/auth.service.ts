@@ -17,11 +17,11 @@ export class AuthService {
 
   userData:any=new BehaviorSubject(null);
   signUp(fromData:object):Observable<any>{
-    return this._HttpClient.post('https://www.authenticationsystem.somee.com//api/Accounts/register',fromData)
+    return this._HttpClient.post('https://sticky-note-fe.vercel.app/signup',fromData)
   }
   
   signIn(fromData:object):Observable<any>{
-    return this._HttpClient.post('https://www.authenticationsystem.somee.com//api/Accounts/login',fromData)
+    return this._HttpClient.post('https://sticky-note-fe.vercel.app/signin',fromData)
   }
 
   saveUserData(){
