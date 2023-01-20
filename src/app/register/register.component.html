@@ -1,0 +1,57 @@
+<div>
+    <h2 class="ms-5 mb-5">Register</h2>
+    <div class="w-75 mx-auto my-3">
+
+        <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
+            <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label mb-3">First name</label>
+                <input formControlName="first_name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="First_name">
+                <div *ngIf="registerForm.get('first_name')?.touched && registerForm.get('first_name')?.errors">
+                    <p *ngIf="registerForm.get('first_name')?.getError('required')" class="text-danger mt-2">first name is required</p>
+                    <p *ngIf="registerForm.get('first_name')?.getError('minlength')" class="text-danger mt-2">first name minlength is 3</p>
+                    <p *ngIf="registerForm.get('first_name')?.getError('maxlength')" class="text-danger mt-2">first name maxlength is 10</p>                    
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label mb-3">Last name</label>
+                <input formControlName="last_name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Last_name">
+                <div *ngIf="registerForm.get('last_name')?.touched && registerForm.get('last_name')?.errors">
+                    <p *ngIf="registerForm.get('last_name')?.getError('required')" class="text-danger mt-2">Last name is required</p>
+                    <p *ngIf="registerForm.get('last_name')?.getError('minlength')" class="text-danger mt-2">Last name minlength is 3</p>
+                    <p *ngIf="registerForm.get('last_name')?.getError('maxlength')" class="text-danger mt-2">Last name maxlength is 10</p>                    
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label mb-3">Age</label>
+                <input formControlName="age" type="text" class="form-control" id="exampleFormControlInput1" placeholder="age">
+                <div *ngIf="registerForm.get('age')?.touched && registerForm.get('age')?.errors">
+                    <p *ngIf="registerForm.get('age')?.getError('required')" class="text-danger mt-2">age is required</p>
+                    <p *ngIf="registerForm.get('age')?.getError('min')" class="text-danger mt-2">Min age is 16</p>
+                    <p *ngIf="registerForm.get('age')?.getError('max')" class="text-danger mt-2">Max age is 100</p>                    
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label mb-3">Email</label>
+                <input formControlName="email" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email">
+                <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors">
+                    <p *ngIf="registerForm.get('email')?.getError('required')" class="text-danger mt-2">email is required</p>
+                    <p *ngIf="registerForm.get('email')?.getError('email')" class="text-danger mt-2">Enter valid email</p>
+                                       
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label mb-3">password</label>
+                <input formControlName="password" type="text" class="form-control" id="exampleFormControlInput1" placeholder="password">
+                <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.errors">
+                    <p *ngIf="registerForm.get('password')?.getError('required')" class="text-danger mt-2">password is required</p>
+                    <p *ngIf="registerForm.get('password')?.getError('pattern')" class="text-danger mt-2">Enter valid password</p>             
+                </div>
+              </div>
+
+              <button type="submit" [disabled]="registerForm.invalid" class="btn btn-info mt-3">
+                {{onLoading?'loading..':'submit'}}
+              </button>
+        </form>
+    </div>
+</div>

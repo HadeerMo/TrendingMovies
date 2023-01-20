@@ -1,0 +1,39 @@
+<div>
+    <h2 class="ms-5 mb-5">Login</h2>
+    <div class="w-75 mx-auto my-3">
+
+        <form [formGroup]="loginForm" (ngSubmit)="submuLogin(loginForm)">
+            <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label mb-3">Email</label>
+                <input formControlName="email" type="text" class="form-control" id="exampleFormControlInput1"
+                    placeholder="Email">
+                <div *ngIf="f['email'].touched && f['email'].invalid">
+                    <p *ngIf="f['email'].errors && f['email'].errors['required']" class="text-danger mt-2">email is
+                        required</p>
+                    <p *ngIf="f['email'].errors && f['email'].errors['email']" class="text-danger mt-2">Enter valid
+                        email
+                    </p>
+
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label mb-3">password</label>
+                <input formControlName="password" type="text" class="form-control" id="exampleFormControlInput1"
+                    placeholder="password">
+                <div *ngIf="f['password'].touched && f['password'].invalid">
+                    <p *ngIf="f['password'].errors&& f['password'].errors['required']" class="text-danger mt-2">password
+                        is
+                        required</p>
+                    <p *ngIf="f['password'].errors&& f['password'].errors['pattern']" class="text-danger mt-2">Enter
+                        valid
+                        password</p>
+                </div>
+            </div>
+
+            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-info mt-3">
+                {{isLoading?'loading..':'Submit'}}
+            </button>
+        </form>
+    </div>
+</div>
