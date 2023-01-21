@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
-    password: new FormControl(null, [Validators.pattern('^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$'), Validators.required])
+    password: new FormControl(null, [Validators.pattern(/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[#$@!%&?])[A-Za-z\d#$@!%&?]{8,30}$/), Validators.required])
   })
 errorMessage:string='';
 isLoading:boolean=false;

@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
     last_name: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
     age: new FormControl(null, [Validators.required, Validators.min(16), Validators.max(100)]),
     email: new FormControl(null, [Validators.required, Validators.email]),
-    password: new FormControl(null, [Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$')]),
+    password: new FormControl(null, [Validators.required, Validators.pattern(/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[#$@!%&?])[A-Za-z\d#$@!%&?]{8,30}$/)]),
   })
   errorMessage: string = ''
   onLoading: boolean = false
